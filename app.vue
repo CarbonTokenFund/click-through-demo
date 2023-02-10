@@ -15,8 +15,8 @@
                 </div>
                 <div class="flex flex-col justify-between leading-normal w-48 py-1 relative">
                     <div class="flex">
-                        <h5 class="flex text-xl font-bold tracking-tight text-gray-900 dark:text-white mt-2">{{ item.title }}</h5>
-                        <h5 class="flex flex-grow justify-end text-xl font-bold tracking-tight text-red-700 dark:text-white mt-2 mr-2">R{{format(item.price)}}</h5>
+                        <h5 class="flex text-xl font-bold tracking-tight text-gray-900">{{ item.title }}</h5>
+                        <h5 class="flex flex-grow justify-end text-xl font-bold tracking-tight text-red-700 mt-2 mr-2">R{{format(item.price)}}</h5>
                     </div>
 
                     <span class="text-sm italic text-gray-600">Packet 500g</span>
