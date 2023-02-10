@@ -1,6 +1,6 @@
 <template>
 
-    <navbar v-model="search" @checkoutOpen="modal = true"/>
+    <navbar v-model="search" @checkoutOpen="empty ? modal = false : modal = true"/>
 
     <section class="container mx-auto">
         <h1 class="text-3xl mt-6">Fresh Produce &#x203a; Vegetables</h1>
@@ -18,7 +18,6 @@
                         <h5 class="flex text-xl font-bold tracking-tight text-gray-900">{{ item.title }}</h5>
                         <h5 class="flex flex-grow justify-end text-xl font-bold tracking-tight text-red-700 mt-2 mr-2">R{{format(item.price)}}</h5>
                     </div>
-
                     <span class="text-sm italic text-gray-600">Packet 500g</span>
                     <span class="text-sm">Campbell Organics</span>
                     <span class="text-sm">Distance: <span class="font-bold">5km</span> Stock: <span class="font-bold">14</span></span>
@@ -26,14 +25,13 @@
                 </div>
             </a>
         </div>
-
-        <h1 class="text-3xl mt-6">Fresh Produce &#x203a; Fruit</h1>
+        <h1 class="text-3xl mt-6">Fresh Produce &#x203a; Fruit</h1> {{empty}}
         <infobar class="mt-4 mb-8">Wednesday orders open. Closes in 0h14m</infobar>
         <h1 class="text-3xl mt-6">Locally made Edibles</h1>
         <h1 class="text-3xl mt-6">Shipped in Edibles</h1>
 
     </section>
-    <div v-if="modal === true" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full bg-opacity-50 bg-black">
+    <div v-if="modal === true && !empty" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full bg-opacity-50 bg-black">
         <div class="relative w-full h-full max-w-2xl md:h-auto mx-auto my-auto">
             <basket v-model="database" @checkoutClose = "modal = false"/>
         </div>
@@ -41,7 +39,7 @@
 </template>
 
 <script setup>
-import {ref} from 'vue'
+import {computed, ref} from 'vue'
 import Navbar from "./components/navbar";
 import Infobar from "./components/infobar";
 import Basket from "./components/basket"
@@ -54,6 +52,8 @@ const format = (value) => {
 }
 
 let modal = ref(false);
+
+let empty = computed(() => database.value.filter((row) => row.qty > 0).length === 0)
 
 const database = ref([
     {
