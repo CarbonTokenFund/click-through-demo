@@ -1,6 +1,6 @@
 <template>
 
-    <navbar v-model="search"/>
+    <navbar v-model="search" @checkoutOpen="modal = true"/>
 
     <section class="container mx-auto">
         <h1 class="text-3xl mt-6">Fresh Produce &#x203a; Vegetables</h1>
@@ -33,21 +33,28 @@
         <h1 class="text-3xl mt-6">Shipped in Edibles</h1>
 
     </section>
-    <div id="defaultModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full bg-opacity-50 bg-black">
-        <div class="relative w-full h-full max-w-2xl md:h-auto">
-            <basket v-model="database"/>
+    <div v-if="modal === true" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full bg-opacity-50 bg-black">
+        <div class="relative w-full h-full max-w-2xl md:h-auto mx-auto my-auto">
+            <basket v-model="database" @checkoutClose = "modal = false"/>
         </div>
     </div>
 </template>
 
 <script setup>
-import {onMounted, ref} from 'vue'
-import {initModals} from 'flowbite'
+import {ref} from 'vue'
 import Navbar from "./components/navbar";
 import Infobar from "./components/infobar";
 import Basket from "./components/basket"
 
 const search = ref('')
+
+const randString = new Intl.NumberFormat("en-US", {minimumFractionDigits: 2});
+const format = (value) => {
+    return randString.format(value)
+}
+
+let modal = ref(false);
+
 const database = ref([
     {
         qty: 0,
@@ -120,17 +127,6 @@ const database = ref([
     }
 ])
 
-let formatting_options = {
-}
-
-const randString = new Intl.NumberFormat("en-US", {minimumFractionDigits: 2});
-const format = (value) => {
-    return randString.format(value)
-}
-
-onMounted(() => {
-    initModals();
-})
 
 
 </script>

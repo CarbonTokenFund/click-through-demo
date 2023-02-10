@@ -39,7 +39,7 @@
                         <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">My Account</a>
                     </li>
                     <li>
-                        <a href="#" data-modal-target="defaultModal" data-modal-toggle="defaultModal" class="block py-2 pl-3 pr-4 text-gray-700 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">&#x1F6D2 My Basket</a>
+                        <a href="#" @click="showModal()" class="block py-2 pl-3 pr-4 text-gray-700 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">&#x1F6D2 My Basket</a>
                     </li>
                 </ul>
             </div>
@@ -50,7 +50,7 @@
 
 import {computed} from "vue";
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'checkoutOpen'])
 
 const props = defineProps({
     modelValue: {
@@ -58,6 +58,10 @@ const props = defineProps({
         default: ''
     }
 })
+
+const showModal = () => {
+    emit('checkoutOpen')
+}
 
 const search = computed({
     get() {
