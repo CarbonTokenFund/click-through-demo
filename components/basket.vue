@@ -54,22 +54,21 @@
                         <td class="px-6 py-4 text-right">R99.00</td>
                     </tr>
                     <tr>
-                        <td class="px-6 py-4">{{voluntary}}%</td>
-                        <td class="px-6 py-4">Voluntary <span class="font-medium">CarbonToken&trade;</span> investment</td>
-                        <td class="px-6 py-4"></td>
-                        <td class="px-6 py-4 text-right">R{{format(voluntary * (total + 99) / 100)}}</td>
+                        <td class="px-6 py-4"><span v-if="voluntary > 0"> {{voluntary}}%</span><span v-if="voluntary < 5">Free</span></td>
+                        <td class="px-6 py-4"><span class="font-medium">CarbonToken&trade;</span> investment</td>
+                        <td class="px-6 py-4">$CTF{{formatToken(((voluntary / 100) * (total + 99) / 1000) + (total + 99) / 100000)}}</td>
+                        <td class="px-6 py-4 text-right">R{{format((voluntary * (total + 99) / 100)) }}</td>
                     </tr>
                     <tr>
                         <td class="px-6 py-4"></td>
-                        <td class="px-6 py-4 font-bold">Total</td>
+                        <td class="px-6 py-4 font-bold">You Pay</td>
                         <td class="px-6 py-4"></td>
                         <td class="px-6 py-4 text-right font-bold">R{{format(total + 99 + (voluntary * (total + 99) / 100))}}</td>
                     </tr>
                     <tr>
                         <td colspan="4" class="px-6 pt-10">
-                            <label for="default-range" class="block mb-2 text-sm font-thin text-gray-900">Voluntary <span class="font-medium">CarbonToken&trade;</span> investment of {{voluntary}}% gains $CTF{{formatToken((voluntary / 100) * (total + 99) / 1000)}}</label>
+                            <label for="default-range" class="block mb-2 text-sm font-thin text-gray-900"><span class="font-medium">CarbonToken&trade;</span> investment ({{voluntary}}%)</label>
                             <input v-model="voluntary" id="default-range" type="range" min="0" max="100" step="5" class="text-blue-600 w-full h-2 bg-blue-300 shadow-inner rounded-lg appearance-none cursor-pointer">
-                            <div class="block mt-2 text-sm font-thin text-gray-900">In addition you have earned <span class="font-bold">$CTF{{formatToken((total + 99) / 100000)}}</span> free <span class="font-bold">CarbonToken&trade;s</span></div>
                         </td>
                     </tr>
                     </tbody>
