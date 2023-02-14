@@ -67,8 +67,19 @@
                     </tr>
                     <tr>
                         <td colspan="4" class="px-6 pt-10">
-                            <label for="default-range" class="block mb-2 text-sm font-thin text-gray-900"><span class="font-medium">CarbonToken&trade;</span> investment ({{voluntary}}%)</label>
-                            <input v-model="voluntary" id="default-range" type="range" min="0" max="10" step="5" class="text-blue-600 w-full h-2 bg-blue-300 shadow-inner rounded-lg appearance-none cursor-pointer">
+                            <div class="flex flex-row">
+                                <label for="default-range" class="block mb-2 text-sm font-thin text-gray-900 inline"><span class="font-medium">CarbonToken&trade;</span> investment ({{voluntary}}%)</label>
+                                <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="ml-2 w-6 h-6 cursor-pointer ">
+                                    <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </div>
+                            <input v-model="voluntary" id="default-range" type="range" min="0" max="10" step="1" class="text-blue-600 w-full h-2 bg-blue-300 shadow-inner rounded-lg appearance-none cursor-pointer">
+                            <!--
+                            <div role="tooltip" style="z-index: 10000000" class=" bg-red-500 absolute inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                Tooltip content
+                                <div class="tooltip-arrow" data-popper-arrow></div>
+                            </div>
+                            -->
                         </td>
                     </tr>
                     </tbody>
@@ -165,7 +176,7 @@
 <script setup>
 
 import {computed, ref, watchEffect} from "vue";
-import { Spinner as spinner } from 'flowbite-vue'
+import { Tooltip } from 'flowbite-vue'
 
 const step = ref(1);
 const voluntary = ref(0);
