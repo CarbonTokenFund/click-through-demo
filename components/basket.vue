@@ -158,8 +158,13 @@
         <!-- Modal body -->
         <div class="p-6 space-y-6">
             <div class="relative overflow-x-auto">
+                <div class="text-2xl">Thank you!</div>
+                <div class="mt-2 text-xl">We have received your payment and your order has been placed.</div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 my-4 text-green-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
                 <div class="text-2xl">Congratulations!</div>
-                <div class="mt-2 text-xl">Your payment was successful</div>
+                <div class="mt-2 text-xl">[Logo Animation]</div>
                 <div class="block mt-6 font-thin text-gray-900">You earned <span class="font-bold">$CTF{{formatToken((total + 99) / 100000)}}</span> for your purchase.</div>
                 <div class="block mt-2 font-thin text-gray-900">In addition your purchased <span class="font-bold">$CTF{{formatToken((voluntary / 100) * (total + 99) / 1000)}}</span></div>
 
