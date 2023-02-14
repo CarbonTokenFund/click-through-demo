@@ -68,7 +68,7 @@
                     <tr>
                         <td colspan="4" class="px-6 pt-10">
                             <label for="default-range" class="block mb-2 text-sm font-thin text-gray-900"><span class="font-medium">CarbonToken&trade;</span> investment ({{voluntary}}%)</label>
-                            <input v-model="voluntary" id="default-range" type="range" min="0" max="100" step="5" class="text-blue-600 w-full h-2 bg-blue-300 shadow-inner rounded-lg appearance-none cursor-pointer">
+                            <input v-model="voluntary" id="default-range" type="range" min="0" max="10" step="5" class="text-blue-600 w-full h-2 bg-blue-300 shadow-inner rounded-lg appearance-none cursor-pointer">
                         </td>
                     </tr>
                     </tbody>
