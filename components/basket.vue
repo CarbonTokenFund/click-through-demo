@@ -171,6 +171,7 @@
                 </div>
                 <div class="block font-thin text-gray-900">You earned <span class="font-bold">$CTF{{formatToken((total + 99) / 100000)}}</span> for your purchase.</div>
                 <div class="block mt-2 font-thin text-gray-900">In addition your purchased <span class="font-bold">$CTF{{formatToken((voluntary / 100) * (total + 99) / 1000)}}</span></div>
+                <div class="block mt-2 font-thin text-gray-900">Total <span class="font-bold">$CTF{{formatToken((voluntary / 100) * (total + 99) / 1000 + ((total + 99) / 100000))}}</span></div>
 
             </div>
         </div>
